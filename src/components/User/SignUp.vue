@@ -1,5 +1,5 @@
 <template>
      <div>
-        hi
+        User Sign Up
     </div>
 </template>
