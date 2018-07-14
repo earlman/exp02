@@ -1,11 +1,11 @@
 /* eslint-disable */
 import Vue from 'vue';
 import Vuex from 'vuex';
-import d from './'
+
 Vue.use(Vuex)
 
-export const store = new Vuex.store({
+export const store = new Vuex.Store({
   modules: {
-    d: d,
+
   }
 })
