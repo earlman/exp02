@@ -2,16 +2,20 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import * as firebase from 'firebase';
 import Buefy from 'buefy';
-import 'buefy/lib/buefy.css';
+
 import SuiVue from 'semantic-ui-vue';
+import 'buefy/lib/buefy.css';
 
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import { store } from './store';
+import {
+  store
+} from './store';
 
-Vue.use(Buefy);
+
 Vue.use(SuiVue);
+Vue.use(Buefy);
 
 Vue.config.productionTip = false;
 
