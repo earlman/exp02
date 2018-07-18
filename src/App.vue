@@ -1,12 +1,21 @@
 <template>
     <div id="app">
-        <SuiSidebar animation="push" :visible="sidebar">
-            <SuiSidebarPusher>test</SuiSidebarPusher>
+        <SuiSidebar animation="push" :visible="sidebar" class="container">
+            <SuiSidebarPusher>
+                <button class="button" v-on:click="sidebar=!sidebar">
+                    <b-icon icon="close"></b-icon>
+                </button>
+            </SuiSidebarPusher>
         </SuiSidebar>
         <section class="section">
             <div class="container">
                 <nav class="level">
                     <div class="level-left">
+                        <div class="level-item">
+                            <a class = "button" v-on:click="sidebar=!sidebar">
+                                <b-icon icon="menu"></b-icon>
+                            </a>
+                        </div>
                         <div class="level-item">
                             <router-link to="/profile" >
                             <a class = "button">
@@ -29,7 +38,7 @@
                             </a>
                             </router-link>
                         </div>
-                
+
                     </div>
                     <div class="level-right">
                         <div class="field has-addons">
@@ -49,8 +58,6 @@
         </section>
         <section class = "section">
             <div class = "container">
-                <SuiButton primary v-on:click="sidebar=!sidebar">Primary</SuiButton>
-                <sui-button secondary>Secondary</sui-button>
                 <router-view> main application content </router-view>
             </div>
         </section>
@@ -66,7 +73,7 @@ export default {
     return {
         sidebar: false,
     };
-  }
+  },
 };
 </script>
 
