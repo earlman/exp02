@@ -27,9 +27,7 @@ module.exports = {
   rules: {
     'linebreak-style': 0,
     'indent': 0,
-    'max-len': ["error", {
-      "ignoreComments": true
-    }],
+    'max-len': 0,
 
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

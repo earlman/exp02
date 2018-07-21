@@ -10,24 +10,24 @@ Vue.use(Router);
 
 export default new Router({
   routes: [{
-      path: '/',
-      name: 'Home',
-      component: Home,
+    path: '/',
+    name: 'Home',
+    component: Home,
     },
     {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile,
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
     },
     {
-      path: '/signin',
-      name: 'SignIn',
-      component: SignIn,
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn,
     },
     {
-      path: '/signup',
-      name: 'SignUp',
-      component: SignUp,
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp,
     },
   ],
 });

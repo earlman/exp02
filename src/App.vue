@@ -34,9 +34,17 @@
                         <div class="level-item">
                             <router-link to="/signup" >
                             <a class = "button">
-                                <span> Sign Out </span>
+                                <span> Sign Up </span>
                             </a>
                             </router-link>
+                        </div>
+                        <div class="level-item">
+                            <a class = "button" @click="signUserOut">
+                                <span> Sign Out </span>
+                            </a>
+                        </div>
+                        <div class="level-item" >
+                            <p>{{user.email}}</p>
                         </div>
 
                     </div>
@@ -68,12 +76,24 @@
 
 <script>
 export default {
-  name: 'App',
-  data() {
-    return {
-        sidebar: false,
-    };
-  },
+    name: 'App',
+    data() {
+        return {
+            sidebar: false,
+        };
+    },
+
+    computed: {
+        user() {
+            return this.$store.getters.user;
+        },
+    },
+
+    methods: {
+        signUserOut() {
+            this.$store.commit('clearUser');
+        },
+    },
 };
 </script>
 
