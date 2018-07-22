@@ -43,7 +43,7 @@
                                 <span> Sign Out </span>
                             </a>
                         </div>
-                        <div class="level-item" >
+                        <div class="level-item" v-if="user !== null">
                             <p>{{user.email}}</p>
                         </div>
 

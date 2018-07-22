@@ -3,7 +3,7 @@
         <div class="tile is-ancestor">
             <div class="tile"></div>
             <div class="tile is-parent">
-                <div class="tile is-child">
+                <div class="tile is-child" @keyup.enter="onSignUp">
                     <b-field>
                         <b-input
                             type="email"
@@ -46,37 +46,37 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                email: '',
-                password: '',
-                confirmPassword: '',
-            };
+export default {
+    data() {
+        return {
+            email: '',
+            password: '',
+            confirmPassword: '',
+        };
+    },
+    computed: {
+        /*
+        user() {
+            return this.$store.getters.user;
         },
-        computed: {
-            /*
-            user() {
-                return this.$store.getters.user;
-            },
-            error() {
-                return this.$store.getters.error;
-            },
-            isLoading() {
-                return this.$store.getters.loading;
-            },
-            */
+        error() {
+            return this.$store.getters.error;
         },
+        isLoading() {
+            return this.$store.getters.loading;
+        },
+        */
+    },
 
-        methods: {
-            onSignUp() {
-                this.$store.dispatch('signUserUp', { email: this.email, password: this.password });
-                this.email = '';
-                this.password = '';
-                this.confirmPassword = '';
-            },
+    methods: {
+        onSignUp() {
+            this.$store.dispatch('signUserUp', { email: this.email, password: this.password });
+            this.email = '';
+            this.password = '';
+            this.confirmPassword = '';
         },
-}
+    },
+};
 
 
 </script>

@@ -51,6 +51,28 @@ export const store = new Vuex.Store({
                 console.log(error)
                 }
             )
+        },
+
+        signUserIn({commit}, payload) {
+            commit('setLoading', true)
+            commit('clearError')
+            firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).then(
+                user => {
+                    commit('setLoading', false) //I guess set loading is used for api loading
+
+                    const newUser = {
+                        id: user.user.uid,
+                        email: user.user.email,
+                    }
+                    commit('setUser', newUser)
+                }
+            ).catch(
+                error=> {
+                    commit('setLoading', false)
+                    commit('setError', error)
+                    console.log(error)
+                }
+            )
         }
     },
     
