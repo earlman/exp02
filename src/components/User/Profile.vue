@@ -30,6 +30,20 @@
             </b-field>
         </section>
         <section class="section">
+            <table class="table">
+                <thead></thead>
+                <tbody>
+                    <tr v-for="item in items" v-bind:key="item.key">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>{{ item.progress }}</td>
+                        <td>{{ item.dateStarted }}</td>
+                        <td>{{ item.dateCompleted }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="section">
             <div>
                 User Profile
             </div>
@@ -75,7 +89,7 @@ export default {
     methods: {
         onAddItem() {
             console.log('check out my button');
-            this.items.push({...this.newItem}); // wooooooah object literals... i'm so cool dude
+            this.items.push({ ...this.newItem }); // wooooooah object literals... i'm so cool dude
             /*
             this.newItem.name = '';
             this.newItem.type = '';
