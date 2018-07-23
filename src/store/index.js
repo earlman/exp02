@@ -10,6 +10,43 @@ export const store = new Vuex.Store({
         user: "user1",
         loading: false,
         error: null,
+        userItems: {
+            completed: [{
+                name: 'The Book of Mormon',
+                type: 'Book',
+                progress: 'Completed',
+                dateStarted: new Date(),
+                dateCompleted: new Date(),
+            }],
+            inprogress: [{
+                name: 'The Bible',
+                type: 'Book',
+                progress: 'Completed',
+                dateStarted: new Date(),
+                dateCompleted: new Date(),
+            }],
+            onhold: [{
+                name: 'Teletubbies',
+                type: 'TV Show',
+                progress: 'Completed',
+                dateStarted: new Date(),
+                dateCompleted: new Date(),
+            }],
+            dropped: [{
+                name: 'Van Helsing',
+                type: 'Movie',
+                progress: 'Completed',
+                dateStarted: new Date(),
+                dateCompleted: new Date(),
+            }], //hmm idk if this is gonna be different than 'onhold'
+            future: [{
+                name: 'Peter Pan',
+                type: 'Movie',
+                progress: 'Completed',
+                dateStarted: new Date(),
+                dateCompleted: new Date(),
+            }] 
+        }
     },
 
     mutations: {
@@ -27,6 +64,11 @@ export const store = new Vuex.Store({
         },
         clearUser(state) {
             state.user = null
+        },
+        setItem(state, payload) {
+            //accepts {item(s), list}
+            console.dir(payload)
+            state.userItems[payload.list].push(payload.items)
         }
         
     },
@@ -73,12 +115,20 @@ export const store = new Vuex.Store({
                     console.log(error)
                 }
             )
+        },
+
+        createItem({commit}, payload){
+            console.dir(payload);
+            commit('setItem', {items: payload.items, list: payload.list})
         }
     },
     
     getters: {
         user(state) {
             return state.user
+        },
+        userItems(state){
+            return state.userItems
         }
     }
 

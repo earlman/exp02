@@ -13,6 +13,7 @@
   "dependencies": {
     "buefy": "^0.6.6",
     "firebase": "^5.2.0",
+    "npm": "^6.2.0",
     "nuxt-buefy": "^0.1.0",
     "semantic-ui-vue": "^0.2.11",
     "themoviedb-javascript-library": "^3.0.2",

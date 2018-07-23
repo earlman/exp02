@@ -1,4 +1,5 @@
 {
+    /*
     "movies": {
 
     },
@@ -10,5 +11,48 @@
     "books": {
 
     },
-    ""
+    don't think we need this actually, we'll just actively load each items info from api when the page is loaded
+    */
+
+    "users": {
+        "user1": {
+            "settings": {},
+            "items": {
+                "name": ,
+                "type": ,
+                "list": ,
+                "dateAdded": ,
+                "dateStarted": ,
+                "dateCompleted": ,
+                "progress": ,
+            },
+            "lists": {}
+        },
+        "user2": {
+            "settings": {},
+            "items": {
+                "name": ,
+                "type": ,
+                "list": ,
+                "dateAdded": ,
+                "dateStarted": ,
+                "dateCompleted": ,
+                "progress": ,
+            },
+            "lists": {}
+        },
+        "user3": {
+            "settings": {},
+            "items": {
+                "name": ,
+                "type": ,
+                "list": ,
+                "dateAdded": ,
+                "dateStarted": ,
+                "dateCompleted": ,
+                "progress": ,
+            },
+            "lists": {}
+        }
+    }
 }
