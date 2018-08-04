@@ -144,11 +144,15 @@ export default {
     computed: {
         userItems() {
             return this.$store.getters.userItems;
+        },
+        user() {
+            return this.$store.getters.user;
         }
     },
 
     methods: {
         onAddItem() {
+            if (this.user) {
             console.log('check out my button');
             this.items.push({ ...this.newItem }); // wooooooah object literals... i'm so cool dude
             const sendItem = {
@@ -165,7 +169,10 @@ export default {
             this.newItem.dateCompleted = new Date();
             */
             console.table(this.items);
-        }
+            } else {
+                this.$store.dispatch('logError', 'Please "Log In" to add an item.')
+            }
+        },
     },
 };
 </script>

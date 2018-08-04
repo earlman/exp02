@@ -71,6 +71,9 @@
                 </nav>
             </div>
         </section>
+        <section class = "section notif" v-if="error">
+            <b-message title="Error" type="is-danger"  v-on:close="clearError" has-icon closable>{{error}}</b-message>
+        </section>
         <section class = "section">
             <div class = "container">
                 <router-view> main application content </router-view>
@@ -94,13 +97,25 @@ export default {
         user() {
             return this.$store.getters.user;
         },
+
+        error() {
+            return this.$store.getters.error;
+        }
     },
 
     methods: {
         signUserOut() {
             this.$store.commit('clearUser');
         },
+        clearError() {
+            this.$store.commit('clearError');
+        }
     },
 };
 </script>
 
+<style>
+    .notif {
+        padding: 1rem 1.5rem;
+    }
+</style>

@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        user: "user1",
+        user: null,
         loading: false,
         error: null,
         userItems: {
@@ -74,9 +74,10 @@ export const store = new Vuex.Store({
     },
 
     actions: {
-        signUserUp({commit}, payload) {
+        signUserUp({commit, state}, payload) {
             commit('setLoading', true)
             commit('clearError')
+            
             firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password).then(
                 user => {
                     commit('setLoading', false)
@@ -85,6 +86,19 @@ export const store = new Vuex.Store({
                         email: user.user.email,
                     }
                     commit('setUser', newUser)
+
+
+                    firebase.firestore().collection("users").add({
+                        newUser
+                    }).then(function (docRef) {
+                        console.log("Document written with ID: ", docRef.id);
+                    })
+                    .catch(function (error) {
+                        console.error("Error adding document: ", error);
+                    });
+
+
+
                 }
             ).catch(
                 error => {
@@ -93,6 +107,7 @@ export const store = new Vuex.Store({
                 console.log(error)
                 }
             )
+           
         },
 
         signUserIn({commit}, payload) {
@@ -120,6 +135,10 @@ export const store = new Vuex.Store({
         createItem({commit}, payload){
             console.dir(payload);
             commit('setItem', {items: payload.items, list: payload.list})
+        },
+
+        logError({commit}, payload){
+            commit('setError', payload)
         }
     },
     
@@ -129,7 +148,10 @@ export const store = new Vuex.Store({
         },
         userItems(state){
             return state.userItems
-        }
+        },
+        error(state) {
+            return state.error
+        }   
     }
 
 })
