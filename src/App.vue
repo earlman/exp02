@@ -17,6 +17,13 @@
                             </a>
                         </div>
                         <div class="level-item">
+                            <router-link to="/">
+                                <a class = "button">
+                                    <b-icon icon="home"></b-icon>
+                                </a>
+                            </router-link>
+                        </div>
+                        <div class="level-item">
                             <router-link to="/profile" >
                             <a class = "button">
                                 <b-icon icon="account"></b-icon>
