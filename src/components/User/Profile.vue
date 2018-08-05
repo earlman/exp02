@@ -4,12 +4,12 @@
             <b-field grouped>
                 <b-field><b-input placeholder="Name" v-model="newItem.name"></b-input></b-field>
                 <b-field><b-select placeholder="Type" v-model="newItem.type">
-                    <option>Movie</option>
-                    <option>Show</option>
-                    <option>Book</option>
+                    <option value='movies'>Movie</option>
+                    <option value='shows'>Show</option>
+                    <option value='books'>Book</option>
                 </b-select></b-field>
                 <b-field><b-select placeholder="Progress" v-model="newItem.progress">
-                    <option value='completed'>completed</option>   
+                    <option value='completed'>Completed</option>   
                     <option value='inprogress'>In Progress</option>
                     <option value='onhold'>On-Hold</option>
                     <option value='dropped'>Dropped</option>
@@ -21,7 +21,6 @@
                             placeholder="Date Started"
                             v-model="newItem.dateStarted"></b-datepicker></b-field>
                 <b-field><b-datepicker placeholder="Date Completed" v-model="newItem.dateCompleted"></b-datepicker></b-field>
-                <b-field><b-input placeholder="Progress"></b-input></b-field>
             </b-field>
             <b-field>
                 <button class="button" @click="onAddItem">
@@ -133,8 +132,8 @@ export default {
             ],
             newItem: {
                 name: '',
-                type: '',
-                progress: '',
+                type: null,
+                progress: null,
                 dateStarted: new Date(),
                 dateCompleted: new Date(),
             },
@@ -157,7 +156,7 @@ export default {
             this.items.push({ ...this.newItem }); // wooooooah object literals... i'm so cool dude
             const sendItem = {
                 items: { ...this.newItem },
-                list:  this.newItem.progress ,
+                list: this.newItem.progress,
             };
             console.dir(sendItem);
             this.$store.dispatch('createItem', sendItem);

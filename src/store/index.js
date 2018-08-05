@@ -132,9 +132,17 @@ export const store = new Vuex.Store({
             )
         },
 
-        createItem({commit}, payload){
+        createItem({commit, state}, payload){
             console.dir(payload);
-            commit('setItem', {items: payload.items, list: payload.list})
+            commit('setItem', {items: payload.items, list: payload.list});
+            payload.user=state.user
+            firebase.firestore().collection("items").doc("types").collection(payload.items.type).doc().set({
+                payload
+            }, { merge: true }).then(function() {
+                console.log("Document successfully written!");
+            }).catch(function(error) {
+                commit('setError', payload)
+            })
         },
 
         logError({commit}, payload){
