@@ -2,11 +2,11 @@
     <div class="is-ancestor">
         <div class="tile is-vertical">
             <div class="tile">
-                <div class="tile is-parent">
-                    <div class="tile is-child box"><p class="title">Profile</p></div>
-                </div>
-                <div class="tile is-parent">
-                    <div class="tile is-child box"><p class="title">Overview</p></div>
+                <div class="tile is-parent is-8">
+                    <div class="tile is-child box">
+                        <p class="title">Main</p
+                        
+                        ></div>
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box"><p class="title">Recent Updates</p></div>
