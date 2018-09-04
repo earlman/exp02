@@ -42,7 +42,7 @@
                                     <p class="title is-1">212</p>
                                     <p class="subtitle is-5">movies</p>
                                 </div>
-                            </div>                         
+                            </div>
                             <div class="tile is-parent">
                                 <div class="tile is-child box has-text-centered">
                                     <p class="title is-1">16</p>
@@ -51,7 +51,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
 
@@ -63,27 +62,27 @@
                             <div class="tile is-child">
                                 <figure class="image is-3by4">
                                     <img src="https://bulma.io/images/placeholders/480x640.png">
-                                </figure>                  
+                                </figure>
                             </div>
                             &nbsp; <!-- lmfao jank as fuck -->
                             <div class="tile is-child">
                                 <figure class="image is-3by4">
                                     <img src="https://bulma.io/images/placeholders/480x640.png">
-                                </figure>                  
-                            </div>  
+                                </figure>
+                            </div>
                             &nbsp;
                             <div class="tile is-child">
                                 <figure class="image is-3by4">
                                     <img src="https://bulma.io/images/placeholders/480x640.png">
-                                </figure>                  
-                            </div>  
+                                </figure>
+                            </div>
                             &nbsp;
                             <div class="tile is-child">
                                 <figure class="image is-3by4">
                                     <img src="https://bulma.io/images/placeholders/480x640.png">
-                                </figure>                  
-                            </div>         
-                        </div>       
+                                </figure>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tile is-parent">
@@ -93,21 +92,21 @@
                             <div class="tile is-child">
                                 <figure class="image is-square">
                                     <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </figure>                  
-                            </div>  
+                                </figure>
+                            </div>
                             &nbsp;
                             <div class="tile is-child">
                                 <figure class="image is-square">
                                     <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </figure>                  
+                                </figure>
                             </div>
-                            &nbsp; 
+                            &nbsp;
                             <div class="tile is-child">
                                 <figure class="image is-square">
                                     <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </figure>                  
-                            </div>         
-                        </div>       
+                                </figure>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

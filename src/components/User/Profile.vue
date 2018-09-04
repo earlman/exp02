@@ -146,7 +146,7 @@ export default {
         },
         user() {
             return this.$store.getters.user;
-        }
+        },
     },
 
     methods: {
@@ -169,7 +169,7 @@ export default {
             */
             console.table(this.items);
             } else {
-                this.$store.dispatch('logError', 'Please "Log In" to add an item.')
+                this.$store.dispatch('logError', 'Please "Log In" to add an item.');
             }
         },
     },
