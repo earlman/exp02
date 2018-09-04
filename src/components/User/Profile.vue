@@ -1,5 +1,6 @@
 <template>
     <div>
+        <add-item></add-item>
         <section class="section">
             <b-field grouped>
                 <b-field><b-input placeholder="Name" v-model="newItem.name"></b-input></b-field>

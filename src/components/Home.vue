@@ -1,5 +1,6 @@
 <template>
     <div class="is-ancestor">
+        <add-item></add-item>
         <div class="tile is-vertical">
             <div class="tile">
                 <div class="tile is-parent is-8">

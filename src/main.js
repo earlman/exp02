@@ -12,12 +12,15 @@ import router from './router';
 import {
   store,
 } from './store';
+import AddItemCmp from './components/Shared/AddItem';
 
 
 Vue.use(SuiVue);
 Vue.use(Buefy);
 
 Vue.config.productionTip = false;
+Vue.component('add-item', AddItemCmp);
+
 
 /* eslint-disable no-new */
 new Vue({
