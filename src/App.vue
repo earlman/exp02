@@ -7,71 +7,55 @@
                 </button>
             </SuiSidebarPusher>
         </SuiSidebar>
-        <section class="section">
-            <div class="container">
-                <nav class="level">
-                    <div class="level-left">
-                        <div class="level-item">
-                            <a class = "button" v-on:click="sidebar=!sidebar">
-                                <b-icon icon="menu"></b-icon>
-                            </a>
-                        </div>
-                        <div class="level-item">
-                            <router-link to="/">
-                                <a class = "button">
-                                    <b-icon icon="home"></b-icon>
-                                </a>
-                            </router-link>
-                        </div>
-                        <div class="level-item">
-                            <router-link to="/profile" >
-                            <a class = "button">
-                                <b-icon icon="account"></b-icon>
-                                <span> Profile </span>
-                            </a>
-                            </router-link>
-                        </div>
-                        <div class="level-item">
-                            <router-link to="/signin" >
-                            <a class = "button">
-                                <span> Sign In </span>
-                            </a>
-                            </router-link>
-                        </div>
-                        <div class="level-item">
-                            <router-link to="/signup" >
-                            <a class = "button">
-                                <span> Sign Up </span>
-                            </a>
-                            </router-link>
-                        </div>
-                        <div class="level-item">
-                            <a class = "button" @click="signUserOut">
-                                <span> Sign Out </span>
-                            </a>
-                        </div>
-                        <div class="level-item" v-if="user !== null">
-                            <p>{{user.email}}</p>
-                        </div>
 
-                    </div>
-                    <div class="level-right">
-                        <div class="field has-addons">
-                            <p class="control">
-                                <input class="input" type="text" placeholder="Find a post">
-                            </p>
-                            <p class="control">
-                            <button class="button">
-                                Search
-                            </button>
-                            </p>
-                        </div>
-                    </div>
+        <nav class="navbar is-info is-boxed">
+            <div class="navbar-start">
+                    <a class = "navbar-item" v-on:click="sidebar=!sidebar">
+                        <b-icon icon="menu"></b-icon>
+                    </a>
 
-                </nav>
+                    <router-link to="/" class = "navbar-item">
+                            <b-icon icon="home"></b-icon>
+                    </router-link>
+
+                    <router-link to="/profile" class="navbar-item">
+                        <b-icon icon="account"></b-icon>
+                        <span> Profile </span>
+                    </router-link>
+                    
+                    <router-link to="/signin" class="navbar-item">
+                        <span> Sign In </span>
+                    </router-link>
+                    
+                    <router-link to="/signup" class="navbar-item">
+                        <span> Sign Up </span>
+                    </router-link>
+
+                    <a @click="signUserOut" class="navbar-item">
+                        <span> Sign Out </span>
+                    </a>
+
+                    <div class="navbar-item" v-if="user !== null">
+                        <p>{{user.email}}</p>
+                    </div>
             </div>
-        </section>
-        <section class = "section notif" v-if="error">
+
+            <div class="navbar-end">
+                <div class="navbar-item field has-addons">
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Find a post">
+                    </p>
+                    <p class="control">
+                    <button class="button">
+                        Search
+                    </button>
+                    </p>
+                </div>
+            </div>
+
+        </nav>
+
+        <section class = "section container notif" v-if="error">
             <b-message title="Error" type="is-danger"  v-on:close="clearError" has-icon closable>{{error}}</b-message>
         </section>
         <section class = "section">

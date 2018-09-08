@@ -1,34 +1,31 @@
 <template>
-    <div>
-        <section class="section">
+    <div class="tile is-parent">
+        <div class="tile is-child box">
             <b-field grouped>
-                <b-field><b-input placeholder="Name" v-model="newItem.name"></b-input></b-field>
-                <b-field><b-select placeholder="Type" v-model="newItem.type">
+                <b-input expanded placeholder="Name" v-model="newItem.name" ></b-input>
+                <b-select placeholder="Type" v-model="newItem.type">
                     <option value='movies'>Movie</option>
                     <option value='shows'>Show</option>
                     <option value='books'>Book</option>
-                </b-select></b-field>
-                <b-field><b-select placeholder="Progress" v-model="newItem.progress">
+                </b-select>
+                <b-select placeholder="Progress" v-model="newItem.progress">
                     <option value='completed'>Completed</option>   
                     <option value='inprogress'>In Progress</option>
                     <option value='onhold'>On-Hold</option>
                     <option value='dropped'>Dropped</option>
                     <option value='future'>Future</option>
-                </b-select></b-field>
-            </b-field>
-            <b-field grouped>
-                <b-field><b-datepicker
+                </b-select>
+                <b-datepicker
                             placeholder="Date Started"
-                            v-model="newItem.dateStarted"></b-datepicker></b-field>
-                <b-field><b-datepicker placeholder="Date Completed" v-model="newItem.dateCompleted"></b-datepicker></b-field>
-            </b-field>
-            <b-field>
+                            v-model="newItem.dateStarted"></b-datepicker>
+                <b-datepicker placeholder="Date Completed" v-model="newItem.dateCompleted"></b-datepicker>
+                
                 <button class="button" @click="onAddItem">
                     <b-icon icon="plus"></b-icon>
                     <span>Add Item</span>
                 </button>
             </b-field>
-        </section>
+        </div>
     </div>
 </template>
 
@@ -90,3 +87,11 @@
         },
     };
 </script>
+
+<style scoped>
+
+.box {
+    background-color: #167df0;
+}
+
+</style>
