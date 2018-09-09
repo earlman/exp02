@@ -63,8 +63,11 @@
 
         methods: {
             onAddItem() {
-                if (this.user) {
-                console.log('check out my button');
+                if (this.user &&
+                    this.newItem.name &&
+                    this.newItem.type &&
+                    this.newItem.progress
+                ) {
                 this.items.push({ ...this.newItem }); // wooooooah object literals... i'm so cool dude
                 const sendItem = {
                     items: { ...this.newItem },
@@ -80,8 +83,10 @@
                 this.newItem.dateCompleted = new Date();
                 */
                 console.table(this.items);
+                    this.$store.dispatch('clearError');
+                
                 } else {
-                    this.$store.dispatch('logError', 'Please "Log In" to add an item.');
+                    this.$store.dispatch('logError', 'Item name, type, and progress is required')
                 }
             },
         },

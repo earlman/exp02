@@ -7,7 +7,9 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        user: null,
+        user: {
+            id: null
+        },
         loading: false,
         error: null,
         userItems: {
@@ -82,15 +84,15 @@ export const store = new Vuex.Store({
                 user => {
                     commit('setLoading', false)
                     const newUser = {
-                        id: user.user.uid,
+                        id:user.user.uid,
                         email: user.user.email,
                     }
                     commit('setUser', newUser)
 
 
-                    firebase.firestore().collection("users").add({
+                    firebase.firestore().collection("users").doc(newUser.id).set(
                         newUser
-                    }).then(function (docRef) {
+                    ).then(function (docRef) {
                         console.log("Document written with ID: ", docRef.id);
                     })
                     .catch(function (error) {
@@ -135,18 +137,30 @@ export const store = new Vuex.Store({
         createItem({commit, state}, payload){
             console.dir(payload);
             commit('setItem', {items: payload.items, list: payload.list});
-            payload.user=state.user
-            firebase.firestore().collection("items").doc("types").collection(payload.items.type).doc().set({
+            payload.user=state.user;
+
+            //a lot more needs to be done here, but it will probably have to start with implementing the movie database stuff.
+            firebase.firestore().collection("items").doc("types").collection(payload.items.type).add({
                 payload
-            }, { merge: true }).then(function() {
+            }).then(doc => {
                 console.log("Document successfully written!");
+                console.log(doc.id);
+                firebase.firestore().collection("users").doc(payload.user.id).collection("items").doc(doc.id).set(payload);
+
+
             }).catch(function(error) {
                 commit('setError', payload)
-            })
+            });
+            
+
         },
 
         logError({commit}, payload){
             commit('setError', payload)
+        },
+
+        clearError({commit}){
+            commit('clearError')
         }
     },
     

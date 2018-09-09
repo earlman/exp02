@@ -20,7 +20,7 @@
 
                     <router-link to="/profile" class="navbar-item">
                         <b-icon icon="account"></b-icon>
-                        <span> Profile </span>
+                        <span> {{user.email}} </span>
                     </router-link>
                     
                     <router-link to="/signin" class="navbar-item">
@@ -35,9 +35,10 @@
                         <span> Sign Out </span>
                     </a>
 
-                    <div class="navbar-item" v-if="user !== null">
-                        <p>{{user.email}}</p>
-                    </div>
+                    <a @click="loginDefault" class="navbar-item">
+                        <span> Default User </span>
+                    </a>
+
             </div>
 
             <div class="navbar-end">
@@ -93,6 +94,13 @@ export default {
         },
         clearError() {
             this.$store.commit('clearError');
+        },
+        loginDefault() {
+            const defaultUser = {
+                email: 'default@default.com',
+                password: 'password',
+            };
+            this.$store.dispatch('signUserIn', defaultUser);
         }
     },
 };
