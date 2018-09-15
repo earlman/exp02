@@ -47,9 +47,9 @@
                         <input class="input" type="text" placeholder="Find a post">
                     </p>
                     <p class="control">
-                    <button class="button">
-                        Search
-                    </button>
+                    <router-link to="/search" class="button">
+                        <span> Search </span>
+                    </router-link>
                     </p>
                 </div>
             </div>

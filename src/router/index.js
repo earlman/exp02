@@ -5,6 +5,7 @@ import Home from '@/components/Home';
 import SignIn from '@/components/User/SignIn';
 import SignUp from '@/components/User/SignUp';
 import Profile from '@/components/User/Profile';
+import Search from '@/components/Item/SearchResults';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
     path: '/signup',
     name: 'SignUp',
     component: SignUp,
+    },
+    {
+    path: '/search',
+    name: 'Search',
+    component: Search,
     },
   ],
 });
