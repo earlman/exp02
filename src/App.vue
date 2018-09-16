@@ -85,7 +85,7 @@ export default {
 
         error() {
             return this.$store.getters.error;
-        }
+        },
     },
 
     methods: {
@@ -101,7 +101,7 @@ export default {
                 password: 'password',
             };
             this.$store.dispatch('signUserIn', defaultUser);
-        }
+        },
     },
 };
 </script>

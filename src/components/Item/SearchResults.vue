@@ -30,6 +30,45 @@
             </div>
 
             <hr>
+           
+           <div class="level" v-for="result in results" :key="result.id">
+                <div class="level-left">
+                    <div class="level-item">
+                        <figure class="image is-128x128">
+                            <div class="image is-2by3">
+                                <img :src='getImageURL(result.poster_path)'>   
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                <div class="level-item">
+                    <div class="content">
+                        <p class="title">{{result.title}}</p>
+                        <p class="subtitle">{{result.release_date}}</p>
+                        <p>{{result.overview}}</p>
+                    </div>
+                </div>
+           </div>
+
+           <!-- FUCK IT I GIVE UP
+            <div class="columns">
+                <div class="column is-one-fifth" v-for="result in results" :key="result.id">
+                    <div class="card">
+                        <div class="card-image"><figure class="image">
+                            <img :src='getImageURL(result.poster_path)'>
+                            </figure></div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title">{{result.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+
             <b-pagination
                 :total="total"
                 :current.sync="current"
@@ -38,17 +77,20 @@
                 :simple="isSimple"
                 :rounded="isRounded"
                 :per-page="perPage">
-
             <!-- data goes here i think -->
-
+         
             </b-pagination>
+
         </div>
 
         <div id="api_response" class="section">
             <button class="button" @click="getData">Get Data</button>
-            <div>
+            <div class="content">
+                <vue-json-pretty :data="configuration"></vue-json-pretty>
+            </div>
+            <div class="content">
                 <vue-json-pretty
-                    :data="info">
+                    :data="results">
                  </vue-json-pretty>
             </div>
         </div>
@@ -76,7 +118,11 @@ export default {
             isRounded: false,
             sample_data: '',
 
-            info: 'sup',
+
+            api_key: 'e3e800db7df66c32a4b17d8d4f27964c',
+            results: null,
+            configuration: '',
+            poster_size: 'w500',
         };
     },
 
@@ -87,14 +133,26 @@ export default {
     methods: {
         getData() {
             axios
+                .get('https://api.themoviedb.org/3/configuration', {
+                    params: {
+                        api_key: this.api_key,
+                    }
+                })
+                .then((response) => { this.configuration=response; })
+
+            axios
                 .get('https://api.themoviedb.org/3/search/movie', {
                     params: {
-                        api_key: 'e3e800db7df66c32a4b17d8d4f27964c',
-                        query: 'poop',
+                        api_key: this.api_key,
+                        query: 'How to Train Your Dragon',
                         page: 1,
                     },
                 })
-                .then((response) => { this.info = response; });
+                .then((response) => { this.results = response.data.results; });
+        },
+
+        getImageURL(path) {
+            return this.configuration.data.images.base_url + this.poster_size + path;
         },
     },
 };
